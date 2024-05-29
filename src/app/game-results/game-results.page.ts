@@ -13,14 +13,17 @@ export class GameResultsPage implements AfterViewInit {
 
   constructor(private router: Router) { }
 
+  // Method that runs when the view is about to enter
   ionViewWillEnter() {
     this.loadGameData();
   }
 
+  // Lifecycle hook that runs after the view has been initialized
   ngAfterViewInit() {
     this.createChart();
   }
 
+  // Method to load game data from local storage
   loadGameData() {
     const selectedGame = localStorage.getItem('selectedGame');
     if (selectedGame) {
@@ -29,6 +32,7 @@ export class GameResultsPage implements AfterViewInit {
     }
   }
 
+  // Method to create a chart with the game data
   createChart() {
     if (!this.game.chartData) {
       return;
@@ -60,6 +64,7 @@ export class GameResultsPage implements AfterViewInit {
     });
   }
 
+  // Method to navigate back to the game list
   goBack() {
     this.router.navigateByUrl('/tabs/game-list');
   }

@@ -14,10 +14,12 @@ export class LoginPage {
 
   constructor(private router: Router, private storageService: StorageService) { }
 
+  // Method that runs when the view is about to enter
   ionViewWillEnter() {
     this.loadLoginData();
   }
 
+  // Method to load login data from storage if "Remember Me" was selected
   async loadLoginData() {
     const savedUsername = await this.storageService.get('username');
     const savedPassword = await this.storageService.get('password');
@@ -30,8 +32,8 @@ export class LoginPage {
     }
   }
 
+  // Method to handle the login process
   async login() {
-
     if (this.username === 'test' && this.password === 'password') {
       if (this.rememberMe) {
         await this.storageService.set('username', this.username);

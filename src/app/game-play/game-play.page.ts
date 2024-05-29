@@ -17,10 +17,12 @@ export class GamePlayPage {
 
   constructor(private modalController: ModalController, private router: Router) { }
 
+  // Method that runs when the view is about to enter
   ionViewWillEnter() {
     this.resetGame();
   }
 
+  // Method to reset the game state
   resetGame() {
     this.scoreHistory = [];
     this.playerAScore = 0;
@@ -28,6 +30,7 @@ export class GamePlayPage {
     this.playerAWins = false;
   }
 
+  // Method to open the pause modal
   async pauseGame() {
     const modal = await this.modalController.create({
       component: PauseModalPage,
@@ -36,6 +39,7 @@ export class GamePlayPage {
     return await modal.present();
   }
 
+  // Method to finish the game and save the game records
   finishGame() {
     const currentGame = JSON.parse(localStorage.getItem('currentGame') || '{}');
     const gameRecords = JSON.parse(localStorage.getItem('gameRecords') || '[]');
@@ -44,7 +48,7 @@ export class GamePlayPage {
     currentGame.playerAWins = this.playerAWins;
     currentGame.name = currentGame.name || `Game ${gameRecords.length + 1}`;
 
-    // 차트 데이터 생성
+    // Generate chart data
     const playerAScores: number[] = [];
     const playerBScores: number[] = [];
     const labels: string[] = [];
@@ -84,10 +88,11 @@ export class GamePlayPage {
     gameRecords.push(currentGame);
 
     localStorage.setItem('gameRecords', JSON.stringify(gameRecords));
-    localStorage.setItem('selectedGame', JSON.stringify(currentGame)); // 결과 페이지로 전달할 데이터 저장
-    this.router.navigateByUrl('/tabs/game-results'); // 게임 리스트가 아니라 결과 페이지로 이동
+    localStorage.setItem('selectedGame', JSON.stringify(currentGame)); // Save data to be passed to the results page
+    this.router.navigateByUrl('/tabs/game-results'); // Navigate to the results page instead of the game list
   }
 
+  // Method to handle Player A scoring a point
   playerAPoint() {
     if (this.playerAScore < 40) {
       this.playerAScore = this.scores[this.scores.indexOf(this.playerAScore) + 1];
@@ -109,6 +114,7 @@ export class GamePlayPage {
     }
   }
 
+  // Method to handle Player B scoring a point
   playerBPoint() {
     if (this.playerBScore < 40) {
       this.playerBScore = this.scores[this.scores.indexOf(this.playerBScore) + 1];
@@ -130,10 +136,12 @@ export class GamePlayPage {
     }
   }
 
+  // Method to handle a draw situation
   draw() {
     this.scoreHistory.push('Draw');
   }
 
+  // Method to reset the scores of both players
   resetScores() {
     this.playerAScore = 0;
     this.playerBScore = 0;

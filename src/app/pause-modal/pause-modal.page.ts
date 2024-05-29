@@ -15,10 +15,12 @@ export class PauseModalPage implements OnDestroy {
 
   constructor(private modalController: ModalController) { }
 
+  // Method to dismiss the modal
   dismissModal() {
     this.modalController.dismiss();
   }
 
+  // Method to start the timer
   startTimer() {
     this.minutesDisplay = this.minutes;
     this.secondsDisplay = this.seconds;
@@ -36,10 +38,12 @@ export class PauseModalPage implements OnDestroy {
     }, 1000);
   }
 
+  // Method to stop the timer
   stopTimer() {
     clearInterval(this.interval);
   }
 
+  // Lifecycle hook that runs when the component is destroyed
   ngOnDestroy() {
     this.stopTimer();
   }

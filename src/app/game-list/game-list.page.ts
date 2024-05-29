@@ -12,10 +12,12 @@ export class GameListPage {
 
   constructor(private router: Router, private alertController: AlertController) { }
 
+  // Method that runs when the view is about to enter
   ionViewWillEnter() {
     this.loadGameRecords();
   }
 
+  // Method to load game records from local storage
   loadGameRecords() {
     const gameRecords = localStorage.getItem('gameRecords');
     if (gameRecords) {
@@ -25,11 +27,13 @@ export class GameListPage {
     }
   }
 
+  // Method to view game details and navigate to the game results page
   viewGameDetail(index: number) {
     localStorage.setItem('selectedGame', JSON.stringify(this.gameRecords[index]));
     this.router.navigateByUrl('/tabs/game-results');
   }
 
+  // Method to edit the name of a game record
   async editGameName(index: number) {
     const alert = await this.alertController.create({
       header: 'Edit Game Name',
@@ -59,6 +63,7 @@ export class GameListPage {
     await alert.present();
   }
 
+  // Method to delete a game record with confirmation
   async deleteGame(index: number) {
     const alert = await this.alertController.create({
       header: 'Delete Game',
@@ -81,10 +86,12 @@ export class GameListPage {
     await alert.present();
   }
 
+  // Method to save game records to local storage
   saveGameRecords() {
     localStorage.setItem('gameRecords', JSON.stringify(this.gameRecords));
   }
 
+  // Method to navigate to the home page
   goHome() {
     this.router.navigateByUrl('/tabs/home');
   }

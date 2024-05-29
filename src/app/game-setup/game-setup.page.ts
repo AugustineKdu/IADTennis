@@ -24,11 +24,13 @@ export class GameSetupPage implements AfterViewInit {
 
   constructor(private router: Router) { }
 
+  // Lifecycle hook that runs after the view has been initialized
   ngAfterViewInit() {
     this.initMap();
     this.initAutocomplete();
   }
 
+  // Method to initialize the map
   initMap() {
     const mapOptions = {
       center: { lat: -34.397, lng: 150.644 },
@@ -37,6 +39,7 @@ export class GameSetupPage implements AfterViewInit {
     this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
   }
 
+  // Method to initialize the autocomplete for location input
   initAutocomplete() {
     const input = document.getElementById('autocomplete') as HTMLInputElement;
     this.autocomplete = new google.maps.places.Autocomplete(input);
@@ -50,6 +53,7 @@ export class GameSetupPage implements AfterViewInit {
     });
   }
 
+  // Method to update the map with a new location
   updateMap(location: any) {
     this.map.setCenter(location);
     if (this.marker) {
@@ -61,12 +65,14 @@ export class GameSetupPage implements AfterViewInit {
     });
   }
 
+  // Method to navigate back to the home page
   goBack() {
     this.router.navigateByUrl('/tabs/home');
   }
 
+  // Method to start the game and save the game setup data
   startGame() {
-    // 게임 시작 로직 구현
+    // Implement the logic to start the game
     localStorage.setItem('currentGame', JSON.stringify(this.game));
     this.router.navigateByUrl('/tabs/game-play');
   }
