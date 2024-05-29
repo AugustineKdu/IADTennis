@@ -1,0 +1,12 @@
+.profile-pic-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.profile-pic-container img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}

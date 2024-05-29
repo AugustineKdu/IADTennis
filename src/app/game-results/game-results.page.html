@@ -10,7 +10,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ game.location }}</ion-card-title>
+      <ion-card-title>{{ game.name || 'Game Detail' }}</ion-card-title>
       <ion-card-subtitle>{{ game.dateTime }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
@@ -25,7 +25,7 @@
       {{ record }}
     </ion-item>
   </ion-list>
-  <div id="chart-section">
-    <!-- 차트 섹션 -->
+  <div>
+    <canvas id="scoreChart"></canvas>
   </div>
 </ion-content>

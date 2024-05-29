@@ -1,12 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <img src="assets/imgs/profile.jpg" />
+    <div class="profile-pic-container">
+      <img [src]="account.profilePicture || 'assets/imgs/default-profile.png'" alt="Profile Picture" />
+    </div>
+    <ion-button expand="full" (click)="uploadPicture()">Change Profile Picture</ion-button>
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput>
     <ion-card-content>
       <ion-item>
         <ion-label position="floating">Name</ion-label>
@@ -19,6 +26,10 @@
       <ion-item>
         <ion-label position="floating">Height</ion-label>
         <ion-input [(ngModel)]="account.height" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">My Notes</ion-label>
+        <ion-textarea [(ngModel)]="account.notes"></ion-textarea>
       </ion-item>
       <ion-button expand="full" (click)="saveAccount()">Save</ion-button>
     </ion-card-content>

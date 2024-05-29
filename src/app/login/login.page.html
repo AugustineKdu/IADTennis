@@ -13,5 +13,9 @@
     <ion-label position="floating">Password</ion-label>
     <ion-input [(ngModel)]="password" type="password"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label>Remember Me</ion-label>
+    <ion-checkbox [(ngModel)]="rememberMe"></ion-checkbox>
+  </ion-item>
   <ion-button expand="full" (click)="login()">Login</ion-button>
 </ion-content>
