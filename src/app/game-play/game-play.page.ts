@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PauseModalPage } from '../pause-modal/pause-modal.page';
 
@@ -13,7 +14,7 @@ export class GamePlayPage {
   playerBScore: number = 0;
   scores = [0, 15, 30, 40];
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, private router: Router) { }
 
   async pauseGame() {
     const modal = await this.modalController.create({
@@ -21,6 +22,17 @@ export class GamePlayPage {
       cssClass: 'pause-modal'
     });
     return await modal.present();
+  }
+
+  finishGame() {
+    const currentGame = JSON.parse(localStorage.getItem('currentGame') || '{}');
+    const gameRecords = JSON.parse(localStorage.getItem('gameRecords') || '[]');
+
+    currentGame.records = this.scoreHistory;
+    gameRecords.push(currentGame);
+
+    localStorage.setItem('gameRecords', JSON.stringify(gameRecords));
+    this.router.navigateByUrl('/tabs/game-list');
   }
 
   playerAPoint() {
@@ -63,14 +75,6 @@ export class GamePlayPage {
 
   draw() {
     this.scoreHistory.push('Draw');
-  }
-
-  // pauseGame() {
-  //   console.log('Game paused');
-  // }
-
-  finishGame() {
-    console.log('Game finished');
   }
 
   resetScores() {

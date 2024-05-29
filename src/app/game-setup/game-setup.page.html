@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Create Game</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="goBack()">Back Button</ion-button>
+      <ion-button (click)="goBack()">Back</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -22,11 +22,9 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Location</ion-label>
-    <ion-input [(ngModel)]="game.location" type="text"></ion-input>
+    <ion-input [(ngModel)]="game.location" id="autocomplete" type="text"></ion-input>
   </ion-item>
-  <div class="map-container">
-    <p>Map Screen</p>
-  </div>
+  <div id="map" style="height: 200px;"></div>
   <ion-item>
     <ion-label>Pre-set</ion-label>
     <ion-input [(ngModel)]="game.preset" type="text"></ion-input>
@@ -37,5 +35,5 @@
       <ion-select-option *ngFor="let set of [1, 3, 5]" [value]="set">{{ set }}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button expand="full" (click)="startGame()">Start Button</ion-button>
+  <ion-button expand="full" (click)="startGame()">Start Game</ion-button>
 </ion-content>

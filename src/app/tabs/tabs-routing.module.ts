@@ -12,6 +12,14 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'game-list',
+        loadChildren: () => import('../game-list/game-list.module').then(m => m.GameListPageModule)
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule)
+      },
+      {
         path: 'game-setup',
         loadChildren: () => import('../game-setup/game-setup.module').then(m => m.GameSetupPageModule)
       },
@@ -22,10 +30,6 @@ const routes: Routes = [
       {
         path: 'game-results',
         loadChildren: () => import('../game-results/game-results.module').then(m => m.GameResultsPageModule)
-      },
-      {
-        path: 'personal-info',
-        loadChildren: () => import('../personal-info/personal-info.module').then(m => m.PersonalInfoPageModule)
       },
       {
         path: '',

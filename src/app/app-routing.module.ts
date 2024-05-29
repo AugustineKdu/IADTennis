@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'pause-modal',
     loadChildren: () => import('./pause-modal/pause-modal.module').then( m => m.PauseModalPageModule)
+  },
+  {
+    path: 'game-list',
+    loadChildren: () => import('./game-list/game-list.module').then( m => m.GameListPageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
   }
 ];
 
