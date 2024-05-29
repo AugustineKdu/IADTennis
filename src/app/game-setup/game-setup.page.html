@@ -9,6 +9,10 @@
 
 <ion-content>
   <ion-item>
+    <ion-label position="floating">Game Name</ion-label>
+    <ion-input [(ngModel)]="game.name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-label position="floating">Date/Time</ion-label>
     <ion-datetime [(ngModel)]="game.dateTime"></ion-datetime>
   </ion-item>

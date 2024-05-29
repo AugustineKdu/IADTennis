@@ -10,6 +10,7 @@ declare var google: any;
 })
 export class GameSetupPage implements AfterViewInit {
   game = {
+    name: '',
     dateTime: '',
     playerName: '',
     description: '',
