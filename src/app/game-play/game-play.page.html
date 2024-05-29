@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>game-play</ion-title>
+    <ion-title>Game Play</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">game-play</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="score-display">
+    <div>
+      <h2>Player A Score</h2>
+      <p>{{ playerAScore }}</p>
+    </div>
+    <div>
+      <h2>Player B Score</h2>
+      <p>{{ playerBScore }}</p>
+    </div>
+  </div>
+  <div class="score-history">
+    <p>Score History</p>
+    <ion-list>
+      <ion-item *ngFor="let score of scoreHistory">
+        {{ score }}
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="controls">
+    <ion-button (click)="playerAPoint()">Player A Point</ion-button>
+    <ion-button (click)="draw()">Draw</ion-button>
+    <ion-button (click)="playerBPoint()">Player B Point</ion-button>
+  </div>
+  <ion-button expand="block" (click)="pauseGame()">Pause Game</ion-button>
+  <ion-button expand="block" (click)="finishGame()">Finish Game</ion-button>
 </ion-content>

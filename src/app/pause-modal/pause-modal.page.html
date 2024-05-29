@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pause Game</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="timer-setup">
+    <ion-item>
+      <ion-label position="floating">Minutes</ion-label>
+      <ion-input [(ngModel)]="minutes" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Seconds</ion-label>
+      <ion-input [(ngModel)]="seconds" type="number"></ion-input>
+    </ion-item>
+  </div>
+  <div class="timer-display">
+    <h2>{{ minutesDisplay }}:{{ secondsDisplay | number: '2.0' }}</h2>
+  </div>
+  <div class="controls">
+    <ion-button expand="full" (click)="startTimer()">Start Timer</ion-button>
+    <ion-button expand="full" (click)="stopTimer()">Stop Timer</ion-button>
+  </div>
+</ion-content>

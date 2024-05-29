@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'pause-modal',
+    loadChildren: () => import('./pause-modal/pause-modal.module').then( m => m.PauseModalPageModule)
   }
 ];
 

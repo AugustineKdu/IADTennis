@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 
-import { GamePlayPage } from './game-play.page';
+import { IonicModule } from '@ionic/angular';
+
+import { PauseModalPageRoutingModule } from './pause-modal-routing.module';
+
+import { PauseModalPage } from './pause-modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: GamePlayPage }])
+    PauseModalPageRoutingModule
   ],
-  declarations: [GamePlayPage]
+  declarations: [PauseModalPage]
 })
-export class GamePlayPageModule { }
+export class PauseModalPageModule {}

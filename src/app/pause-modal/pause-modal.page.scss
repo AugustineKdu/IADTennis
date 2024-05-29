@@ -1,0 +1,25 @@
+.timer-setup {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 24px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.pause-modal {
+  --width: 300px;
+  --height: 300px;
+  --border-radius: 10px;
+}
